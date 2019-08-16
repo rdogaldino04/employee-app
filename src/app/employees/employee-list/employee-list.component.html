@@ -1,0 +1,25 @@
+<table class="table table-hover">
+    <thead>
+      <th>ID</th>      
+      <th>Nome</th>
+      <th>Salario</th>      
+      <th>Idade</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of mEmployees">
+        <td>{{ emp.id }}</td>           
+        <td>{{ emp.employee_name }}</td> 
+        <td>{{ emp.employee_salary }}</td>           
+        <td>{{ emp.employee_age }}</td> 
+        <td>
+            <button  class="btn btn-outline-warning mb-1 btn-sm">
+              Atualizar
+            </button>
+            <button (click)="delete(emp.id)" class="btn btn-outline-danger ml-1 mb-1 btn-sm">
+              Deletar
+            </button>
+        </td>       
+      </tr>
+    </tbody>
+  </table>
