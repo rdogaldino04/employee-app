@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Employee } from '../employee';
+import { EmployeesService } from '../employees.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -13,7 +14,8 @@ export class EmployeeListComponent implements OnInit {
 
   mEmployees: Employee[];
 
-  constructor(private mHttpClient: HttpClient) { }
+  constructor(private mHttpClient: HttpClient,
+    private mEmployeesService: EmployeesService) { }
 
   ngOnInit() {
     //console.log(`${environment.uriBase}employees`)
@@ -36,6 +38,11 @@ export class EmployeeListComponent implements OnInit {
 
   reload(id: string) {
     this.mEmployees = this.mEmployees.filter(ele => ele.id !== id);
+  }
+
+  enviaDadosParaAtualizar(emp: Employee) {
+    //console.log(emp);
+    this.mEmployeesService.employeeEmitter.emit(emp);
   }
 
 }
