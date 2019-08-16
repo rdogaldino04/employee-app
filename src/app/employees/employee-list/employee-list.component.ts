@@ -19,7 +19,21 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit() {
     //console.log(`${environment.uriBase}employees`)
-    this.mHttpClient.get(`${environment.uriBase}employees`).subscribe((o: Employee[]) => {
+    this.findAll();
+
+    this.mEmployeesService.id.subscribe(o => {
+      //console.log(o);
+      this.findAll();
+    },
+    (error: any) => {
+      console.log(error);
+    });
+
+  }
+
+  private findAll() {
+    const url = `${environment.uriBase}employees`;
+    this.mHttpClient.get(url).subscribe((o: Employee[]) => {
       //console.log(o);
       this.mEmployees = o;
     });

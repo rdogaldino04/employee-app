@@ -53,7 +53,8 @@ export class EmployeeFormComponent implements OnInit {
     this.http.put(url, submit).subscribe(dados => {
       console.log('Atualizado com sucesso!');
       console.log(dados);
-      this.formulario.reset();
+      this.mEmployeesService.id.emit(true)
+      this.formulario.reset();      
     }, (erro: any) => {
       console.log('Erro ao atualizar');
       console.log(erro);
@@ -66,6 +67,7 @@ export class EmployeeFormComponent implements OnInit {
       .subscribe(dados => {
         console.log('Salvo com sucesso!');
         console.log(dados);
+        this.mEmployeesService.id.emit(true)
         this.formulario.reset();
       }, (erro: any) => {
         console.log('Erro ao salvar');

@@ -6,7 +6,9 @@ import { Employee } from './employee';
 })
 export class EmployeesService {
 
-  employeeEmitter = new EventEmitter<Employee>()
+  employeeEmitter = new EventEmitter<Employee>();
+
+  id = new EventEmitter<boolean>()
 
   constructor() { }
 }
